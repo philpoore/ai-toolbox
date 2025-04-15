@@ -1,4 +1,5 @@
 # AI Toolbox
+![images/screenshot.png](images/screenshot.png)
 
 ## Description
 AI Toolbox is a web application that provides a curated list of AI models, APIs, tools, and resources to help users explore the modern AI ecosystem.
