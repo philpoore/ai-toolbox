@@ -194,10 +194,11 @@
   <button class="suggest-button" onclick="document.getElementById('modal').style.display='flex'">Suggest a Link</button>
 
   <div id="modal" class="modal" onclick="if(event.target === this) this.style.display='none'">
+    <form method="POST" action="https://philpoore.app.n8n.cloud/webhook/0e234aed-9ae1-4386-9e47-b9736907ad1d">
     <div class="modal-content">
       <h3>Suggest a Link</h3>
       <label for="section">Section:</label>
-      <select id="section">
+      <select id="section" name="section">
         <option>Models</option>
         <option>Model Access & APIs</option>
         <option>IDEs & Local Dev</option>
@@ -207,13 +208,14 @@
       </select>
 
       <label for="name">Name:</label>
-      <input type="text" id="name" />
+      <input type="text" id="name" name="name" />
 
       <label for="url">URL:</label>
-      <input type="url" id="url" />
+      <input type="url" id="url" name="url" />
 
-      <button onclick="document.getElementById('modal').style.display='none'">Submit</button>
+      <button>Submit</button>
     </div>
+    </form>
   </div>
 
   <footer>
