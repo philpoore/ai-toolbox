@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Toolbox</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0077ff;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .section h2 {
+      border-left: 5px solid #0077ff;
+      padding-left: 0.75rem;
+      font-size: 1.5rem;
+    }
+    .link-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .link-item {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1 1 40%;
+      min-width: 200px;
+      text-decoration: none;
+      color: #0077ff;
+      transition: transform 0.2s ease;
+    }
+    .link-item:hover {
+      transform: scale(1.02);
+    }
+    .link-item img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    footer {
+      background: #fff;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #ddd;
+      margin-top: 1em;
+    }
+    .suggest-button {
+      display: block;
+      margin: 1em auto;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 90%;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+    }
+    .modal-content label {
+      display: block;
+      margin-top: 1rem;
+    }
+    .modal-content input, .modal-content select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .modal-content button {
+      margin-top: 1.5rem;
+      background: #0077ff;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧠 AI Toolbox</h1>
+    <p>Explore the modern AI ecosystem, one click at a time.</p>
+  </header>
+  <div class="container">
+
+    <div class="section">
+      <h2>Models</h2>
+      <div class="link-list">
+        <a href="https://openai.com" class="link-item">OpenAI GPT-4.1</a>
+        <a href="https://claude.ai" class="link-item">Claude 3.7</a>
+        <a href="https://github.com/deepseek-ai" class="link-item">Deepseek R1</a>
+        <a href="https://ai.meta.com/llama/" class="link-item">Meta LLaMA 3</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Model Access & APIs</h2>
+      <div class="link-list">
+        <a href="https://platform.openai.com/docs" class="link-item">OpenAI API</a>
+        <a href="https://docs.anthropic.com" class="link-item">Anthropic API</a>
+        <a href="https://docs.together.ai" class="link-item">Together.ai</a>
+        <a href="https://console.groq.com" class="link-item">Groq API</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>IDEs & Local Dev</h2>
+      <div class="link-list">
+        <a href="https://github.com/features/copilot" class="link-item">GitHub Copilot</a>
+        <a href="https://www.cursor.so/" class="link-item">Cursor</a>
+        <a href="https://cline.ai" class="link-item">Cline</a>
+        <a href="https://continue.dev" class="link-item">Continue</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Frameworks & Tools</h2>
+      <div class="link-list">
+        <a href="https://www.langchain.com/" class="link-item">LangChain</a>
+        <a href="https://www.llamaindex.ai/" class="link-item">LlamaIndex</a>
+        <a href="https://microsoft.github.io/autogen/" class="link-item">AutoGen</a>
+        <a href="https://docs.crewai.com/" class="link-item">CrewAI</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Automation & Integration</h2>
+      <div class="link-list">
+        <a href="https://n8n.io/" class="link-item">n8n</a>
+        <a href="https://zapier.com/" class="link-item">Zapier</a>
+        <a href="https://gumloop.com" class="link-item">Gumloop</a>
+        <a href="https://autogenstudio.com/" class="link-item">Autogen Studio</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Learn More</h2>
+      <div class="link-list">
+        <a href="https://paperswithcode.com/" class="link-item">Papers with Code</a>
+        <a href="https://huggingface.co/" class="link-item">HuggingFace</a>
+        <a href="https://github.com/dair-ai/Prompt-Engineering-Guide" class="link-item">Prompt Engineering Guide</a>
+        <a href="https://github.com/Hannibal046/Awesome-LLM" class="link-item">Awesome LLM</a>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="suggest-button" onclick="document.getElementById('modal').style.display='flex'">Suggest a Link</button>
+
+  <div id="modal" class="modal" onclick="if(event.target === this) this.style.display='none'">
+    <div class="modal-content">
+      <h3>Suggest a Link</h3>
+      <label for="section">Section:</label>
+      <select id="section">
+        <option>Models</option>
+        <option>Model Access & APIs</option>
+        <option>IDEs & Local Dev</option>
+        <option>Frameworks & Tools</option>
+        <option>Automation & Integration</option>
+        <option>Learn More</option>
+      </select>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" />
+
+      <label for="url">URL:</label>
+      <input type="url" id="url" />
+
+      <button onclick="document.getElementById('modal').style.display='none'">Submit</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 — Made by <a href="https://philpoore.com">PhilPoore</a> and ChatGPT
+  </footer>
+
+  <script>
+    document.querySelectorAll('.link-item').forEach(link => {
+      const url = new URL(link.href);
+      const domain = url.hostname;
+      const icon = document.createElement('img');
+      icon.src = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
+      icon.alt = domain;
+      link.prepend(icon);
+    });
+  </script>
+</body>
+</html>
