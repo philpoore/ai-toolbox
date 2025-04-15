@@ -73,6 +73,10 @@
       border-top: 1px solid #ddd;
       margin-top: 1em;
     }
+
+    footer img {
+      vertical-align: middle;
+    }
     .suggest-button {
       display: block;
       margin: 1em auto;
@@ -119,6 +123,13 @@
       padding: 0.5rem 1rem;
       border-radius: 5px;
       cursor: pointer;
+    }
+    .responseMessage {
+      padding: 1em;
+    }
+
+    input {
+      box-sizing: border-box;
     }
   </style>
 </head>
@@ -194,7 +205,7 @@
   <button class="suggest-button" onclick="document.getElementById('modal').style.display='flex'">Suggest a Link</button>
 
   <div id="modal" class="modal" onclick="if(event.target === this) this.style.display='none'">
-    <form method="POST" action="https://philpoore.app.n8n.cloud/webhook/0e234aed-9ae1-4386-9e47-b9736907ad1d">
+    <form id="suggestionForm">
     <div class="modal-content">
       <h3>Suggest a Link</h3>
       <label for="section">Section:</label>
@@ -214,12 +225,49 @@
       <input type="url" id="url" name="url" />
 
       <button>Submit</button>
+      <div id="responseMessage" style="display:none;"></div>
     </div>
+    <script>
+      function hideIt() {
+        setTimeout(() => {
+          document.getElementById('responseMessage').style.display = 'none';
+        }, 1000)
+      }
+      document.getElementById('suggestionForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        
+        document.getElementById('responseMessage').innerText = 'Sending...';
+        document.getElementById('responseMessage').style.display = 'block';
+
+        const formData = new FormData(this);
+        fetch('https://philpoore.app.n8n.cloud/webhook/0e234aed-9ae1-4386-9e47-b9736907ad1d', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('responseMessage').innerText = 'Thank you!';
+          document.getElementById('responseMessage').style.display = 'block';
+          hideIt()
+        })
+        .catch(error => {
+          document.getElementById('responseMessage').innerText = 'Error: ' + error.message;
+          document.getElementById('responseMessage').style.display = 'block';
+          hideIt()
+        });
+      });
+    </script>
     </form>
   </div>
 
   <footer>
     &copy; 2025 — Made by <a href="https://philpoore.com">PhilPoore</a> and ChatGPT
+    <a href="https://github.com/philpoore/ai-toolbox" target="_blank" rel="noopener noreferrer"><img src="https://img.icons8.com/?size=24&id=62856&format=png&color=000000" /></a>
   </footer>
 
   <script>
